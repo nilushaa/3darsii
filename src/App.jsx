@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
 const colors = {
-  primary: "bg-[#FF6F61]",   // yorqin qizil (background uchun)
-  primaryHover: "hover:bg-[#e65b50]", // hover uchun
-  secondary: "text-[#4A90E2]", // yorqin ko‘k
-  accent: "text-[#F5A623]",    // to‘q sariq
-  background: "bg-[#F0F4F8]", // engil kulrang fon
+  primary: "bg-[#FF6F61]",
+  primaryHover: "hover:bg-[#e65b50]",
+  secondary: "text-[#4A90E2]",
+  accent: "text-[#F5A623]",
+  background: "bg-[#F0F4F8]",
   text: "text-[#333]",
 };
 
@@ -20,6 +20,7 @@ export default function App() {
     gender: "Male",
   });
 
+  const [users, setUsers] = useState([]);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -30,9 +31,21 @@ export default function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(
-      `User created:\n${formData.firstName} ${formData.lastName}, Age: ${formData.age}, From: ${formData.from}, Job: ${formData.job}, Gender: ${formData.gender}\nImage URL: ${formData.imageUrl}`
-    );
+
+    setUsers((prev) => [...prev, formData]); 
+    handleClear(); 
+  };
+
+  const handleClear = () => {
+    setFormData({
+      imageUrl: "",
+      firstName: "",
+      lastName: "",
+      age: "",
+      from: "",
+      job: "",
+      gender: "Male",
+    });
   };
 
   return (
@@ -46,6 +59,7 @@ export default function App() {
             Create New User
           </h2>
           <form onSubmit={handleSubmit}>
+
             <label className="block mb-2">
               Image URL:
               <input
@@ -55,7 +69,6 @@ export default function App() {
                 onChange={handleChange}
                 className="w-full p-2 mt-1 mb-4 rounded-md border border-gray-300"
                 placeholder="Enter image URL"
-                required
               />
             </label>
 
@@ -68,7 +81,6 @@ export default function App() {
                 onChange={handleChange}
                 className="w-full p-2 mt-1 mb-4 rounded-md border border-gray-300"
                 placeholder="Enter first name"
-                required
               />
             </label>
 
@@ -81,7 +93,6 @@ export default function App() {
                 onChange={handleChange}
                 className="w-full p-2 mt-1 mb-4 rounded-md border border-gray-300"
                 placeholder="Enter last name"
-                required
               />
             </label>
 
@@ -92,9 +103,8 @@ export default function App() {
                 name="age"
                 value={formData.age}
                 onChange={handleChange}
-                className="w-full p-2 mt-1 mb-4 rounded-md border border-gray-300"
+                className="w-full p-2 mt-1 mb-4 rounded-md border border-gray-300 appearance-none"
                 placeholder="Enter age"
-                required
               />
             </label>
 
@@ -107,7 +117,6 @@ export default function App() {
                 onChange={handleChange}
                 className="w-full p-2 mt-1 mb-4 rounded-md border border-gray-300"
                 placeholder="Enter your location"
-                required
               />
             </label>
 
@@ -120,7 +129,6 @@ export default function App() {
                 onChange={handleChange}
                 className="w-full p-2 mt-1 mb-4 rounded-md border border-gray-300"
                 placeholder="Enter job title"
-                required
               />
             </label>
 
@@ -150,18 +158,63 @@ export default function App() {
               </label>
             </fieldset>
 
-            <button
-              type="submit"
-              className={`${colors.primary} ${colors.primaryHover} text-white py-2 px-6 rounded-lg font-semibold text-lg cursor-pointer transition-colors duration-300`}
-            >
-              Submit
-            </button>
+            <div className="flex justify-between">
+              <button
+                type="submit"
+                className={`${colors.primary} ${colors.primaryHover} text-white py-2 px-6 rounded-lg font-semibold text-lg cursor-pointer transition-colors duration-300`}
+              >
+                Submit
+              </button>
+              <button
+                type="button"
+                onClick={handleClear}
+                className="bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 px-6 rounded-lg font-semibold text-lg transition-colors duration-300"
+              >
+                Clear
+              </button>
+            </div>
           </form>
         </section>
+        {users.length > 0 && (
+          <section className="bg-white rounded-[15px] p-6 shadow-md max-w-xl mx-auto">
+            <h3 className="text-xl font-bold mb-4 text-gray-700">
+              Added Users:
+            </h3>
+            <ul className="space-y-4">
+              {users.map((user, index) => (
+                <li
+                  key={index}
+                  className="border p-4 rounded-md bg-gray-50 shadow-sm"
+                >
+                  <div className="flex items-center gap-4">
+                    {user.imageUrl && (
+                      <img
+                        src={user.imageUrl}
+                        alt={`${user.firstName}`}
+                        className="w-16 h-16 object-cover rounded-full border"
+                      />
+                    )}
+                    <div>
+                      <p className="font-semibold text-lg">
+                        {user.firstName} {user.lastName}
+                      </p>
+                      <p className="text-sm text-gray-600">
+                        Age: {user.age} | From: {user.from}
+                      </p>
+                      <p className="text-sm text-gray-600">
+                        Job: {user.job} | Gender: {user.gender}
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
       </main>
 
       <footer className={`${colors.secondary} mt-16 text-center font-semibold`}>
-        © 2025 CU-Theta. Barcha huquqlar himoyalangan.
+        © 2025 CU-Theta. xuquqlar himoyalangan.
       </footer>
     </div>
   );
