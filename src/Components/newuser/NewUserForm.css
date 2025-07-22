@@ -1,9 +1,9 @@
 .overlay {
     backdrop-filter: blur(3px);
-    position: fixed; /* Positionni 'flex' o'rniga 'fixed' qilib qo'ying */
+    position: fixed;
     background-color: rgba(51, 51, 51, 0.5);
     width: 100%;
-    height: 100vh; /* Bu ekranni to'liq qoplash uchun kerak */
+    height: 100vh;
     top: 0;
     left: 0;
     display: flex;
@@ -15,11 +15,11 @@
 
 .modal {
     background-color: #fff;
-    padding: 2rem 3rem; /* Paddingni kengaytirdim, yaxshiroq joylashtirish uchun */
+    padding: 2rem 3rem; 
     border-radius: 0.5rem;
     text-align: center;
-    max-width: 500px; /* Modalning maksimal kengligi */
-    width: 100%; /* Modalni ekran bo'ylab kengaytirish */
+    max-width: 500px; 
+    width: 100%; 
     
 }
 
@@ -32,12 +32,12 @@
 }
 
 .modal input {
-    font-size: 8px; /* Kichikroq shrift o'lchamini qo'llash */
+    font-size: 8px; 
     font-family: inherit;
-    padding: 10px; /* Shriftlarni yanada o'qilishi uchun kengroq qilish */
-    width: 100%; /* Input maydonining kengligini 100% ga o'rnatish */
-    border: 1px solid #ccc; /* Chegarani aniqlash */
-    border-radius: 0.25rem; /* Yumshoq burchaklar */
+    padding: 10px; 
+    width: 100%; 
+    border: 1px solid #ccc; 
+    border-radius: 0.25rem; 
     padding-right: 8px;
     
 }
@@ -45,7 +45,6 @@
 .modal label span {
     display: block;
     text-align: left;
-    /* margin-bottom: 0.5rem; */
 }
 
 .gender {
@@ -63,16 +62,16 @@
     color: #fff;
     border: none;
     font-family: inherit;
-    padding: 0.75rem 2rem; /* Tugma uchun kengroq joy */
+    padding: 0.75rem 2rem;
     cursor: pointer;
     font-weight: 500;
     align-self: center;
     margin-top: 2rem;
     border-radius: 0.25rem;
-    transition: background-color 0.3s ease; /* Hover effektini qo'shdim */
+    transition: background-color 0.3s ease; 
     
 }
 
 .modal-btn:hover {
-    background: #c93b97; /* Tugma ustiga kursorni olib borganingizda rangni o'zgartirish */
+    background: #c93b97; 
 }
