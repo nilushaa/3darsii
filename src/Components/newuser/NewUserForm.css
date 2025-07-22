@@ -10,7 +10,7 @@
     justify-content: center;
     align-items: center;
     z-index: 100;
-    margin-top: 40px;
+    margin-top: 60px;
 }
 
 .modal {
@@ -20,13 +20,15 @@
     text-align: center;
     max-width: 500px; /* Modalning maksimal kengligi */
     width: 100%; /* Modalni ekran bo'ylab kengaytirish */
+    
 }
 
 .modal form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    height: 70vh;
+   
+
 }
 
 .modal input {
@@ -37,6 +39,7 @@
     border: 1px solid #ccc; /* Chegarani aniqlash */
     border-radius: 0.25rem; /* Yumshoq burchaklar */
     padding-right: 8px;
+    
 }
 
 .modal label span {
@@ -67,6 +70,7 @@
     margin-top: 2rem;
     border-radius: 0.25rem;
     transition: background-color 0.3s ease; /* Hover effektini qo'shdim */
+    
 }
 
 .modal-btn:hover {
