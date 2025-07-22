@@ -92,7 +92,6 @@ export default function App() {
                 name="age"
                 value={formData.age}
                 onChange={handleChange}
-                min={1}
                 className="w-full p-2 mt-1 mb-4 rounded-md border border-gray-300"
                 placeholder="Enter age"
                 required
