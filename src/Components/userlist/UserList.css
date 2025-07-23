@@ -28,3 +28,17 @@
 .card-inner button:hover {
     background-color: #e14b4b; 
 }
+
+
+.userList-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;     
+    justify-content: flex-start; 
+    height: auto;            
+}
+
+.card {
+    width: 320px; 
+}
